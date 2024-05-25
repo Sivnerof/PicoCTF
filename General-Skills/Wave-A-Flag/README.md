@@ -2,7 +2,7 @@
 
 ## Description
 
-Can you invoke help flags for a tool or binary? [This program](./warm "") has extraordinarily helpful information...
+Can you invoke help flags for a tool or binary? [This program](./warm "Warm CTF Binary") has extraordinarily helpful information...
 
 ## Hints
 
