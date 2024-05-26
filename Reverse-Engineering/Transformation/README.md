@@ -14,9 +14,27 @@ I wonder what this really is... [enc](https://mercury.picoctf.net/static/77a2b20
 
 ## Walkthrough
 
-THIS WALKTHROUGH IS UNFINISHED
+For this challenge we're given a text file named [enc](./enc "Text file with encoded text") which contains encoded text. At first glance the appears to be Chinese, but putting the characters into a translator just returns gibberish.
 
 ```灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸強㕤㐸㤸扽```
+
+We're also given the following Python code.
+
+```python
+''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
+```
+
+
+
+
+
+
+
+
+
+
+
+---
 
 ```python
 encoded_flag = '灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸強㕤㐸㤸扽'
