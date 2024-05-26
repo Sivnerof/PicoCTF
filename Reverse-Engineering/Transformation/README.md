@@ -51,15 +51,36 @@ for i in range(0, len(plain_text), 2):
 
     # Add the new character to the encoded text
     encoded_text += new_character
+
+# The word 'test' encodes to 瑥獴
 print(encoded_text)
 ```
 
+Breakdown of the program:
+* The python program operates on two characters at a time.
+* The current characters unicode value in every loop is made larger by 8 bits (one byte).
+  * Example: Lowercase t (decimal: 116) goes from 01110100 to 0111010000000000 (decimal: 29696)
+* This results in a much larger number with 8 trailing zeroes.
+* Those 8 trailing zeroes are then used as storage for the next characters unicode value. This is done by adding the two values together.
+* This new value is interesting because it contains in the higher byte the current characters unicode value, and in the lower byte it contains the next characters unicode value.
+* The character representation of the new unicode value is then added to the string and the loop repeats, encoding all two letter pairs into a single character.
 
+Essentially this means that every character in the encoded text is made up of 16 bits (2 bytes), where the upper byte represents one character on the ASCII chart and the lower byte represents another.
 
+Below is a table that shows how the output from the program above ("瑥獴") relates to the plaintext word "test". The table can also be used to give you an idea of how to manually decode the encoded text given in this CTF.
 
-
-
-
+|                          |                  |                  |
+|:------------------------:|:----------------:|:----------------:|
+| **CHARACTER**            | 瑥                | 獴                |
+| **DECIMAL**              | 29797            | 29556            |
+| **BINARY**               | 0111010001100101 | 0111001101110100 |
+| **UPPER BYTE**           | 01110100         | 01110011         |
+| **LOWER BYTE**           | 01100101         | 01110100         |
+| **UPPER BYTE DECIMAL**   | 116              | 115              |
+| **LOWER BYTE DECIMAL**   | 101              | 116              |
+| **UPPER BYTE CHARACTER** | t                | s                |
+| **LOWER BYTE CHARACTER** | e                | t                |
+| **CHARACTERS TOGETHER**  | te               | st               |
 
 
 
