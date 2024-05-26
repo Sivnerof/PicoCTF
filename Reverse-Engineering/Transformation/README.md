@@ -14,7 +14,7 @@ I wonder what this really is... [enc](https://mercury.picoctf.net/static/77a2b20
 
 ## Walkthrough
 
-For this challenge we're given a text file named [enc](./enc "Text file with encoded text") which contains encoded text. At first glance the appears to be Chinese, but putting the characters into a translator just returns gibberish.
+For this challenge we're given a text file named [enc](./enc "Text file with encoded text") which contains encoded text. At first glance the text appears to be Chinese, but putting the characters into a translator just returns gibberish.
 
 ```灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸強㕤㐸㤸扽```
 
@@ -23,6 +23,38 @@ We're also given the following Python code.
 ```python
 ''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
 ```
+
+At first, the code seems pretty intimidating but studying the code and rewriting it makes it a little easier to understand.
+
+```python
+plain_text = 'test'
+encoded_text = ''
+
+# The loop will skip every other character because it operates on two characters at a time.
+for i in range(0, len(plain_text), 2):
+
+    # Get current characters unicode value
+    current_char_unicode = ord(plain_text[i])
+
+    # Get next characters unicode value
+    next_char_unicode = ord(plain_text[i + 1])
+
+    # The current character value will bit shift 8 positions to the left
+    # Example: Lowercase t (decimal: 116) goes from 01110100 to 0111010000000000 (decimal: 29696)
+    current_char_unicode_8_bit_shift = current_char_unicode << 8
+
+    # Add the 8-bit shifted current character value and the next characters unicode value
+    new_unicode = current_char_unicode_8_bit_shift + next_char_unicode
+
+    # Get the character at the new unicode location
+    new_character = chr(new_unicode)
+
+    # Add the new character to the encoded text
+    encoded_text += new_character
+print(encoded_text)
+```
+
+
 
 
 
@@ -85,19 +117,6 @@ chr(ord(c) & 0xFF)
 000000011111111 (255)
 ---------------
 000000001101001 (105)
-
-```python
-plain_text = 'test'
-encoded_text = ''
-for i in range(0, len(plain_text), 2):
-    first_character_in_unicode = ord(plain_text[i])
-    second_character_in_unicode = ord(plain_text[i + 1])
-    first_character_in_unicode_after_8_bit_shift = first_character_in_unicode << 8
-    two_byte_long_new_character_in_unicode = first_character_in_unicode_after_8_bit_shift + second_character_in_unicode
-    two_byte_long_new_character = chr(two_byte_long_new_character_in_unicode)
-    encoded_text += two_byte_long_new_character
-print(encoded_text)
-```
 
 
 
