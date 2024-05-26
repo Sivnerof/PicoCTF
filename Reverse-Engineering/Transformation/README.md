@@ -83,28 +83,46 @@ Below is a table that shows how the output from the program above ("瑥獴") rel
 | **CHARACTERS TOGETHER**  | te               | st               |
 
 
-```
->>> format(ord('獴'), '016b')
-'0111001101110100'
-```
+Now that we know the encoding process, we can write a Python program to decode the characters given.
 
 ```python
 encoded_flag = '灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸強㕤㐸㤸扽'
 decoded_flag = ''
 
 for char in encoded_flag:
+
+  # Get the characters unicode value
   character_unicode = ord(char)
+
+  # Convert the unicode to binary (zero-padded 16 bits)
   character_in_binary = format(character_unicode, '016b')
+
+  # Grab the higher byte (left 8 bits)
   higher_byte = character_in_binary[:8]
+
+  # Grab the lower byte (right 8 bits)
   lower_byte = character_in_binary[8:]
-  higher_byte = int(higher_byte, 2)
-  lower_byte = int(lower_byte, 2)
-  asc1 = chr(higher_byte)
-  asc2 = chr(lower_byte)
-  decoded_flag += asc1
-  decoded_flag += asc2
+
+  # Convert the higher byte to decimal
+  higher_byte_in_decimal = int(higher_byte, 2)
+
+  # Convert the lower byte to decimal
+  lower_byte_in_decimal = int(lower_byte, 2)
+  
+  # Convert the higher byte in decimal to ASCII
+  first_character = chr(higher_byte_in_decimal)
+
+  # Convert the lower byte in decimal to ASCII
+  second_character = chr(lower_byte_in_decimal)
+
+  # Append the first decoded character to the decoded flag
+  decoded_flag += first_character
+
+  # # Append the second decoded character to the decoded flag
+  decoded_flag += second_character
 print(decoded_flag)
 ```
 
-```picoCTF{16_bits_inst34d_of_8_75d4898b}```
+After running the above program we should get the following flag.
 
+```picoCTF{16_bits_inst34d_of_8_75d4898b}```
