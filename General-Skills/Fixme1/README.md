@@ -16,6 +16,21 @@ Fix the syntax error in this Python script to print the flag. [Download Python s
 
 ## Walkthrough
 
+[Syntax errors](https://www.geeksforgeeks.org/what-is-a-syntax-error-and-how-to-solve-it/ "Geeks For Geeks article on syntax errors") are the most common errors in programming. Common syntax errors include misspelled variable or function names, improper or missing indentation, forgotten parentheses, unmatched quotes, etc.
+
+A quick way to find the syntax error in the Python program provided to us, is to simply run the program and see what error is returned by the Python interpreter. Keep in mind that running unfamiliar programs can be dangerous, especially if the file is malicious.
+
+If we run the program, we'll see an error that informs us that line 20 of the code contains an unexpected indent.
+
+```
+$ python3 fixme1.py
+  File "fixme1.py", line 20
+    print('That is correct! Here\'s your flag: ' + flag)
+IndentationError: unexpected indent
+```
+
+Looking at the Python code we'll see the line referenced in the error all the way at the end.
+
 ```python
 import random
 
@@ -40,6 +55,8 @@ flag = str_xor(flag_enc, 'enkidu')
 
 ```
 
+After deindenting the print statement, our code should look like this:
+
 ```python
 import random
 
@@ -63,12 +80,7 @@ print('That is correct! Here\'s your flag: ' + flag)
 
 ```
 
-```
-$ python3 fixme1.py
-  File "fixme1.py", line 20
-    print('That is correct! Here\'s your flag: ' + flag)
-IndentationError: unexpected indent
-```
+If we run the program with the syntax error fixed, we'll see that the output of the program is the flag needed to solve this challenge.
 
 ```
 $ python3 fixed.py
