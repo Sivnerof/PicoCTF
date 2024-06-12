@@ -74,7 +74,7 @@ if flag = "":
   print('String XOR encountered a problem, quitting.')
 ```
 
-In Python we check for equality using the double equals signs, ```==```, while the single equals sign, ```=```, is used for assignment. For example, to say that the variable named ```testing``` is equal to ```5```, we say ```testing = 5```. On the other hand, if we want to ask whether testing is equal to 5 we would do ```testing == 5```. Since the code above makes more sense asking if ```flag == ""```, it's safe to assume the error is in the incorrect use of equality operators. Addind one more equals sign seems to fix the problem.
+In Python we check for equality using the double equals signs, ```==```, while the single equals sign, ```=```, is used for assignment. For example, to say that the variable named ```testing``` is equal to ```5```, we say ```testing = 5```. On the other hand, if we want to ask whether testing is equal to 5 we would do ```testing == 5```. Since the code above makes more sense asking if ```flag == ""```, it's safe to assume the error is in the incorrect use of equality operators. Adding one more equals sign seems to fix the problem.
 
 ```python
 import random
@@ -101,3 +101,11 @@ else:
   print('That is correct! Here\'s your flag: ' + flag)
 ```
 
+Running the fixed program outputs the challenges flag.
+
+```
+$ python3 fixed.py
+That is correct! Here's your flag: picoCTF{3qu4l1ty_n0t_4551gnm3nt_f6a5aefc}
+```
+
+```picoCTF{3qu4l1ty_n0t_4551gnm3nt_f6a5aefc}```
