@@ -16,6 +16,28 @@ Fix the syntax error in the Python script to print the flag. [Download Python sc
 
 ## Walkthrough
 
+[Syntax errors](https://www.geeksforgeeks.org/what-is-a-syntax-error-and-how-to-solve-it/ "Geeks For Geeks article on syntax errors") are the most common errors in programming. Common syntax errors include misspelled variable or function names, improper or missing indentation, forgotten parentheses, unmatched quotes, etc.
+
+A quick way to find the syntax error in the Python program provided to us, is to simply run the program and see what error is returned by the Python interpreter. Keep in mind that running unfamiliar programs can be dangerous, especially if the file is malicious.
+
+If we run the program, we'll see an error that informs us that line 22 of the code contains a syntax error.
+
+```
+$ python3 fixme2.py
+  File "/home/sivnerof/Code/Pico-CTF/General-Skills/Fixme2/fixme2.py", line 22
+    if flag = "":
+       ^^^^^^^^^
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
+```
+
+The syntax error thrown back by the Python interpretor in this case is very specific, letting us know that maybe we made an error in our equality check.
+
+```
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
+```
+
+If we review the given code, we can quickly verify that this is indeed the case.
+
 ```python
 import random
 
@@ -44,6 +66,15 @@ else:
 
 
 ```
+
+The equality check uses single equals signs instead of double equals.
+
+```python
+if flag = "":
+  print('String XOR encountered a problem, quitting.')
+```
+
+In Python we check for equality using the double equals signs, ```==```, while the single equals sign, ```=```, is used for assignment. For example, to say that the variable named ```testing``` is equal to ```5```, we say ```testing = 5```. On the other hand, if we want to ask whether testing is equal to 5 we would do ```testing == 5```. Since the code above makes more sense asking if ```flag == ""```, it's safe to assume the error is in the incorrect use of equality operators. Addind one more equals sign seems to fix the problem.
 
 ```python
 import random
