@@ -12,6 +12,8 @@ Can you crack the password to get the flag? Download the password checker [here]
 
 ## Walkthrough
 
+We're told in the CTF description that the program provided to us is a password checker. If we do a quick scan of the code, we can verify this.
+
 ```python
 ### THIS FUNCTION WILL NOT HELP YOU FIND THE FLAG --LT ########################
 def str_xor(secret, key):
@@ -43,6 +45,8 @@ level_2_pw_check()
 
 ```
 
+While scanning through the code, the function named ```level_2_pw_check``` stands out.
+
 ```python
 def level_2_pw_check():
     user_pw = input("Please enter correct password for flag: ")
@@ -54,18 +58,23 @@ def level_2_pw_check():
     print("That password is incorrect")
 ```
 
+It seems that the program takes an encrypted flag found in the text file named [level2.flag.txt.enc](./level2.flag.txt.enc "Encrypted flag text file") and will print it out after decrypting it, but only if the password provided is equal to ```chr(0x34) + chr(0x65) + chr(0x63) + chr(0x39)```.
+
 ```python
 if( user_pw == chr(0x34) + chr(0x65) + chr(0x63) + chr(0x39) ):
+    print("Welcome back... your flag, user:")
+    decryption = str_xor(flag_enc.decode(), user_pw)
+    print(decryption)
+    return
 ```
 
-```
-chr(0x34) + chr(0x65) + chr(0x63) + chr(0x39)
-```
+A simple attempt at obfuscation is used here to make the password more difficult to find. Instead of hardcoding the password directly as a string, each character of the password is represented by its hexadecimal value and converted to a character using the ```chr()``` function. These characters are then concatenated to form the password string, which is then checked against the user input.
+
+We can check the character representations of these hexadecimal values to retrieve the actual password using the Python interpreter.
 
 ```
 $ python3
-Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
+
 >>> chr(0x34)
 '4'
 >>> chr(0x65)
@@ -75,6 +84,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> chr(0x39)
 '9'
 ```
+
+```
+$ python3
+
+>>> chr(0x34) + chr(0x65) + chr(0x63) + chr(0x39)
+'4ec9'
+```
+
+After using the Python interpreter, we'll find that the password is ```4ec9```. We can verify this by running the Python password checker program provided to us and using the newly found password as input when prompted. Doing so will reveal the CTF flag.
 
 ```
 $ python3 level2.py
