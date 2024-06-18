@@ -1,4 +1,4 @@
-# Glory Of the Garden
+# Glory of the Garden
 
 ## Description
 
