@@ -1,24 +1,6 @@
-# Enhance!
-
-## Description
-
-Download this image file and find the flag.
-
-* [Download image file](https://artifacts.picoctf.net/c/102/drawing.flag.svg "PicoCTF link to download svg file")
-
-## Hints
-
-* (None)
-
-## Walkthrough
-
-In this challenge we're given a link to download an SVG file named [drawing.flag.svg](./drawing.flag.svg "Flag Drawing SVG"). The image is a large black circle with a small white circle inside, and on the surface holds no *visible* information.
-
-![drawing.flag.svg](./drawing.flag.svg "Flag Drawing SVG")
-
-```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -138,65 +120,3 @@ In this challenge we're given a link to download an SVG file named [drawing.flag
          id="tspan3752">c 3 d _ d 0 a 7 5 7 b f }</tspan></text>
   </g>
 </svg>
-```
-
-```svg
-<text
-    xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:0.00352781px;line-height:1.25;font-family:sans-serif;letter-spacing:0px word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none stroke-width:0.26458332;"
-    x="107.43014"
-    y="132.08501"
-    id="text3723"><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.08501"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3748">p </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.08942"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3754">i </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.09383"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3756">c </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.09824"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3758">o </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.10265"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3760">C </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.10706"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3762">T </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.11147"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-        id="tspan3764">F { 3 n h 4 n </tspan><tspan
-        sodipodi:role="line"
-        x="107.43014"
-        y="132.11588"
-        style="font-size:0.00352781px;line-height:1.25;fill:#ffffffstroke-width:0.26458332;"
-        id="tspan3752">c 3 d _ d 0 a 7 5 7 b f }</tspan>
-</text>
-```
-
-```
-<tspan
-    sodipodi:role="line"
-    x="107.43014"
-    y="132.08501"
-    style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
-    id="tspan3748">p</tspan>
-```
-
-```picoCTF{3nh4nc3d_d0a757bf}```
