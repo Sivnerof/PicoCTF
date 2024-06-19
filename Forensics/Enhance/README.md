@@ -16,6 +16,10 @@ In this challenge we're given a link to download an SVG file named [drawing.flag
 
 ![drawing.flag.svg](./drawing.flag.svg "Flag Drawing SVG")
 
+[SVG's (Scalable Vector Graphics)](https://www.freecodecamp.org/news/svg-basics-what-are-scalable-vector-graphics-and-how-do-you-use-them/ "freeCodeCamp article and lesson on Scalable Vector Graphics") are graphic files that use [XML (Extensible Markup Language)](https://en.wikipedia.org/wiki/XML "Wikipedia article on XML") to define shapes, paths, and text.
+
+Since SVG files are written in code, we can view them in a code editor.
+
 ```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -140,6 +144,8 @@ In this challenge we're given a link to download an SVG file named [drawing.flag
 </svg>
 ```
 
+If we view the SVG in a code editor (```cat``` will also work and so will ```strings```) we'll see the file metadata and some shape elements being defined, but more importantly we'll see a text element, which is strange because at first glance the image appears to contain no text.
+
 ```svg
 <text
     xml:space="preserve"
@@ -190,6 +196,8 @@ In this challenge we're given a link to download an SVG file named [drawing.flag
 </text>
 ```
 
+Within the ```<text>``` element, we'll find several ```<tspan>``` elements, these are similar to ```<span>``` in HTML. Within those ```<tspan>``` elements are letters which can not be seen in the image because the ```<tspan>``` elements each have a style attribute with a font size set to ```0.00352781px```.
+
 ```
 <tspan
     sodipodi:role="line"
@@ -198,5 +206,18 @@ In this challenge we're given a link to download an SVG file named [drawing.flag
     style="font-size:0.00352781px;line-height:1.25;fill:#ffffff stroke-width:0.26458332;"
     id="tspan3748">p</tspan>
 ```
+
+You can try to increase the font size and resave the file but then you'll find that the letters also overlap eachother because of the closeness of the x and y coordinates defined in the ```<tspan>``` attributes. You can change those too but the easiest way to get the text out would be to just copy and paste them somewhere else.
+
+* p
+* i
+* c
+* o
+* C
+* T
+* F { 3 n h 4 n
+* c 3 d _ d 0 a 7 5 7 b f }
+
+After we remove all the text from their ```<tspan>``` elements and put them together we'll finally get our flag.
 
 ```picoCTF{3nh4nc3d_d0a757bf}```
