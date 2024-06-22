@@ -36,3 +36,29 @@ After exporting the objects, we'll see the following files in our downloads fold
 
 * [picture3.bmp](./Assets/picture3.bmp "Third bitmap exported from pcap")
 
+We'll start with the instructions file. Once opened, the file will show a long series of seemingly enciphered text.
+
+```GSGCQBRFAGRAPELCGBHEGENSSVPFBJRZHFGQVFTHVFRBHESYNTGENAFSRE.SVTHERBHGNJNLGBUVQRGURSYNTNAQVJVYYPURPXONPXSBEGURCYNA```
+
+Trying a bruteforce of all possible Caesar Cipher shifts on the enciphered text will reveal the key used is 13, making this a [ROT-13 cipher](https://en.wikipedia.org/wiki/ROT13 "Wikipedia article for ROT-13 cipher"). Once deciphered, the following text will be revealed.
+
+```TFTPDOESNTENCRYPTOURTRAFFICSOWEMUSTDISGUISEOURFLAGTRANSFER.FIGUREOUTAWAYTOHIDETHEFLAGANDIWILLCHECKBACKFORTHEPLAN```
+
+After adding spaces:
+
+```TFTP DOESNT ENCRYPT OUR TRAFFIC SO WE MUST DISGUISE OUR FLAG TRANSFER. FIGURE OUT AWAY TO HIDE THE FLAG AND I WILL CHECK BACK FOR THE PLAN```
+
+Since the instructions file mentions the plan file, we'll check there next.
+
+```VHFRQGURCEBTENZNAQUVQVGJVGU-QHRQVYVTRAPR.PURPXBHGGURCUBGBF```
+
+Again we'll find enciphered text, maybe the developers used the same cipher used in the instructions file. After deciphering the text using ROT-13 we'll see the following text.
+
+```IUSEDTHEPROGRAMANDHIDITWITH-DUEDILIGENCE.CHECKOUTTHEPHOTOS```
+
+After adding spaces:
+
+```I USED THE PROGRAM AND HID IT WITH - DUEDILIGENCE. CHECK OUT THE PHOTOS```
+
+There's some important information revealed in this text. We have the program referenced and now we know the flag was hidden in the photos, the words due diligence also stick out as a possible tool name or password.
+
