@@ -114,6 +114,36 @@ dbc3a8e974ccf7e91da81aca4a5c1605  usr/share/locale/ro/LC_MESSAGES/steghide.mo
 ```
 
 That's all the information we need to understand that the tool used to hide the flag within an image was the popular stegonagraphy tool known as 
-[steghide](https://www.kali.org/tools/steghide/ "Kali Linux page for Steghide"). We can verify this by looking through the files in the data folder but it's not needed.
+[steghide](https://www.kali.org/tools/steghide/ "Kali Linux page for Steghide"). We can verify this by looking through the files in the data folder but it's not necessary.
+
+Now that we have the tool name ([steghide](https://www.kali.org/tools/steghide/ "Kali Linux page for Steghide")), and a possible password (```DUEDILIGENCE```) we can attempt to extract the hidden flag from the images. In steghide, the syntax for file extraction is ```steghide --extract -sf example.bmp```.
 
 
+[First Bitmap Image](./Assets/picture1.bmp "First Bitmap Image")
+![First Bitmap Image](./Assets/picture1.bmp "First Bitmap Image")
+```
+$ steghide --extract -sf picture1.bmp
+
+Enter passphrase: DUEDILIGENCE
+steghide: could not extract any data with that passphrase!
+```
+
+[Second Bitmap Image](./Assets/picture2.bmp "Second Bitmap Image")
+![Second Bitmap Image](./Assets/picture2.bmp "Second Bitmap Image")
+```
+$ steghide --extract -sf picture2.bmp
+Enter passphrase: DUEDILIGENCE
+steghide: could not extract any data with that passphrase!
+```
+
+[Third Bitmap Image](./Assets/picture3.bmp "Third Bitmap Image")
+![Third Bitmap Image](./Assets/picture3.bmp "Third Bitmap Image")
+```
+$ steghide --extract -sf picture3.bmp
+Enter passphrase: DUEDILIGENCE
+wrote extracted data to "flag.txt".
+```
+
+After attempting to extract the hidden flag from the bitmap images we'll finally find success on the third bitmap image. Reading the contents of the [flag.txt](./Assets/flag.txt "Flag file extracted from picture3.bmp") file we just extracted, we'll see the following text.
+
+```picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}```
