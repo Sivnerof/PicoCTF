@@ -69,3 +69,20 @@ The Python program takes a [binary file that contains a hashed password](./level
 ```python
 pos_pw_list = ["8799", "d3ab", "1ea2", "acaf", "2295", "a9de", "6f3d"]
 ```
+
+We can write a simple python script that hashes all possible passwords and compares them to the correct password hash but there's a faster way we can find the right password.
+
+If we use the [xxd Linux command](https://www.geeksforgeeks.org/xxd-command-in-linux/ "Geeks For Geeks article on xxd Linux command") to print out a hexdump of the [level3.hash.bin file](./level3.hash.bin "Level 3 hash binary file"), we can grab the hashed password.
+
+```
+$ xxd level3.hash.bin
+00000000: 1602 6d60 ff9b 5441 0b34 35b4 03af d226  ..m`..TA.45....&
+```
+
+Hash from hexdump:
+
+```1602 6d60 ff9b 5441 0b34 35b4 03af d226```
+
+Hash from hexdump after removing spaces:
+
+```16026d60ff9b54410b3435b403afd226```

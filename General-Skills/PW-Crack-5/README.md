@@ -62,3 +62,21 @@ level_5_pw_check()
 The Python program takes a [binary file that contains a hashed password](./level5.hash.bin "Level 5 hash binary file") along with a [text file that contains the encrypted flag](./level5.flag.txt.enc "Level 5 encoded flag text file file"). It then prompts the user for a password, if the hashed password matches the hash stored in the binary file, it will decrypt the encrypted flag and print it out.
 
 We're also given a [wordlist of potential passwords](./dictionary.txt "Password Dictionary").
+
+We can write a simple python script that hashes all possible passwords and compares them to the correct password hash but there's a faster way we can find the right password.
+
+If we use the [xxd Linux command](https://www.geeksforgeeks.org/xxd-command-in-linux/ "Geeks For Geeks article on xxd Linux command") to print out a hexdump of the [level5.hash.bin file](./level5.hash.bin "Level 5 hash binary file"), we can grab the hashed password.
+
+```
+$ xxd level5.hash.bin 
+00000000: 0f42 3873 5916 dea9 bac9 b6a7 9824 223b  .B8sY........$";
+```
+
+Hash from hexdump:
+
+```0f42 3873 5916 dea9 bac9 b6a7 9824 223b```
+
+Hash from hexdump after removing spaces:
+
+```0f4238735916dea9bac9b6a79824223b```
+
