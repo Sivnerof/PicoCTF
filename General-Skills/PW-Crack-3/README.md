@@ -91,4 +91,13 @@ Now that we have the correct password hash we can use a [hash decryptor](https:/
 
 ```16026d60ff9b54410b3435b403afd226:2295```
 
-After decrypting the correct password hash we'll see that the password used was ```2295```.
+After decrypting the correct password hash we'll see that the password used was ```2295```. Running the Python program with the newly found password will reveal the flag.
+
+```
+$ python3 level3.py
+Please enter correct password for flag: 2295
+Welcome back... your flag, user:
+picoCTF{m45h_fl1ng1ng_6f98a49f}
+```
+
+```picoCTF{m45h_fl1ng1ng_6f98a49f}```
