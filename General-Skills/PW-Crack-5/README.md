@@ -80,3 +80,8 @@ Hash from hexdump after removing spaces:
 
 ```0f4238735916dea9bac9b6a79824223b```
 
+Now that we have the correct password hash we can use a [hash decryptor](https://hashes.com/en/decrypt/hash "Online hash decryptor from Hashes.com") to get the original password.
+
+```0f4238735916dea9bac9b6a79824223b:eee0```
+
+After decrypting the correct password hash we'll see that the password used was ```eee0```.
