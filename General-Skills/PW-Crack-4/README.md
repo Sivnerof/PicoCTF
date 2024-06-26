@@ -12,7 +12,7 @@ Can you crack the password to get the flag? Download the password checker [here]
 
 ## Walkthrough
 
-[Level 4 encoded flag text file file](./level4.flag.txt.enc "Level 4 encoded flag text file file")
+[Level 4 encoded flag text file](./level4.flag.txt.enc "Level 4 encoded flag text file file")
 
 [Level 4 hash binary file](./level4.hash.bin "Level 4 hash binary file")
 

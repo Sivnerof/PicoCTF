@@ -14,7 +14,7 @@ Can you crack the password to get the flag? Download the password checker [here]
 
 ## Walkthrough
 
-[Level 3 encoded flag text file file](./level3.flag.txt.enc "Level 3 encoded flag text file file")
+[Level 3 encoded flag text file](./level3.flag.txt.enc "Level 3 encoded flag text file file")
 
 [Level 3 hash binary file](./level3.hash.bin "Level 3 hash binary file")
 

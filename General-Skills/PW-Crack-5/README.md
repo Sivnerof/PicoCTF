@@ -14,7 +14,7 @@ Can you crack the password to get the flag? Download the password checker [here]
 
 ## Walkthrough
 
-[Level 5 encoded flag text file file](./level5.flag.txt.enc "Level 5 encoded flag text file file")
+[Level 5 encoded flag text file](./level5.flag.txt.enc "Level 5 encoded flag text file file")
 
 [Level 5 hash binary file](./level5.hash.bin "Level 5 hash binary file")
 
