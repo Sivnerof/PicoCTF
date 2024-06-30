@@ -203,3 +203,5 @@ Your Flag is: picoCTF{3ndi4n_sw4p_su33ess_cfe38ef0}
 ```
 
 ```picoCTF{3ndi4n_sw4p_su33ess_cfe38ef0}```
+
+Fun Fact: The term "endian" comes from [Jonathan Swift](https://en.wikipedia.org/wiki/Jonathan_Swift "Wikipedia article on Jonathan Swift")'s famous novel "[Gulliver's Travels](https://en.wikipedia.org/wiki/Gulliver%27s_Travels "Wikipedia article on Gulliver's Travels")." In the story, we learn that the cause of division among the Lilliputians is based on whether they peel a boiled egg starting at the big end or the little end.
