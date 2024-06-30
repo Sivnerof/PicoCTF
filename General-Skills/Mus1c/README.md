@@ -10,6 +10,8 @@ I wrote you a [song](https://jupiter.challenges.picoctf.org/static/c594d8d915de0
 
 ## Walkthrough
 
+Looking at the [lyrics.txt](./lyrics.txt "Lyrics text file") file we'll see what looks like a very poorly written song. In reality, these are lines of code for an [esoteric programming language](https://en.wikipedia.org/wiki/Esoteric_programming_language "Wikipedia article for esoteric programming languages") known as [Rockstar](https://codewithrockstar.com/ "Rockstar programming language official website") written by [Dylan Beattie](https://dylanbeattie.net/ "Dylan Beattie").
+
 ```
 Pico's a CTFFFFFFF
 my mind is waitin
@@ -67,3 +69,30 @@ build it up, up
 shout it
 shout Pico
 ```
+
+Pasting the lyrics into the [Rockstar interpreter](https://codewithrockstar.com/online "Rockstar interpreter"), we'll find that the program outputs a series of numbers.
+
+```
+114
+114
+114
+111
+99
+107
+110
+114
+110
+48
+49
+49
+51
+114
+```
+
+Converting the numbers from decimal to ASCII reveals the following.
+
+```rrrocknrn0113r```
+
+Placing the text in flag format and hitting submit solves the challenge.
+
+```picoCTF{rrrocknrn0113r}```
