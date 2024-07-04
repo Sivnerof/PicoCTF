@@ -39,4 +39,4 @@ Redacted document.
 
 Pasting the text into an editor has revealed the flag hidden beneath.
 
-picoCTF{C4n_Y0u_S33_m3_fully}
+```picoCTF{C4n_Y0u_S33_m3_fully}```
