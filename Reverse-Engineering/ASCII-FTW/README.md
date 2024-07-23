@@ -10,6 +10,10 @@ This program has constructed the flag using hex ascii values. Identify the flag 
 
 * Online hex-ascii converters can be helpful.
 
-## Walktrhough
+## Walkthrough
 
+After we download the binary file, [asciiftw](./asciiftw "ASCII FTW binary program"), we'll need to open it in a disassembler like [Ghidra](https://ghidra-sre.org/ "Official website for the reverse engineering tool GHIDRA") or [IDA](https://hex-rays.com/ida-free/ "Official website for the reverse engineering tool IDA") to analyze its code and understand its functionality.
 
+Once we load the program into the disassembler, we'll see a simple program where hexadecimal values are being loaded into memory.
+
+![ASCII characters shown in disassembler](./ascii-characters-shown-in-disassembler.png "ASCII characters shown in disassembler")
